@@ -48,14 +48,18 @@
 				$profileid = $profile['id'];
 				$profilefirst = $profile['first_name'];
 				$profilelast = $profile['last_name'];
-				$profileuser = $profile['name'];
 				$profileuser = $profile['username'];
+				
+				//Catch people without usernames
+				if (!profileuser) {
+					$profileuser = $profile['name'];
+				}
 				
 				//Add the profile to the database
 				mysqli_query($mysqli, "INSERT INTO `profiles`(`id`, `first_name`, `last_name`, `username`) VALUES ('$profileid', '$profilefirst', '$profilelast', '$profileuser')");
 				
 				//Put the picture in our library
-				file_put_contents("pictures/" . $existing_profiles[$q]['id'] . ".jpg", file_get_contents("https://graph.facebook.com/" . $existing_profiles[$q]['id'] . "/picture?type=large"));
+				file_put_contents("pictures/" . $profileid . ".jpg", file_get_contents("https://graph.facebook.com/" . $profileid . "/picture?type=large"));
 				
 			}
 			
