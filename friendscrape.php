@@ -51,7 +51,7 @@
 				$profileuser = $profile['username'];
 				
 				//Catch people without usernames
-				if (!profileuser) {
+				if (!$profileuser) {
 					$profileuser = $profile['name'];
 				}
 				
