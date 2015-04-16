@@ -33,7 +33,7 @@
 		for ($q = 0; $q < count($existing_profiles); $q++) {
 			if ($friends[$i] == $existing_profiles[$q]['id']) {
 				$found = true;
-				break;
+				continue;
 			}
 		}
 		
